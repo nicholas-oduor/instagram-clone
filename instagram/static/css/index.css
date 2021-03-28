@@ -4,3 +4,16 @@ h1{
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-style: italic;
 }
+
+.avat>img{
+    border-radius: 40%;
+    height: 30px;
+    width: 30;
+    display: inline-block;
+    clear: left;
+}
+
+.card1>img{
+    height: 600px;
+    width: 550px;
+}
