@@ -32,3 +32,5 @@ To fix a bug or enhance an existing module, follow these steps:
 
 ## Author
 - Nicholas Oduor
+
+ © [Nicholas Oduor](https://github.com/nicholas-oduor)
