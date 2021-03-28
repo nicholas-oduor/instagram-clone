@@ -2,6 +2,8 @@ from django.db import models
 import cloudinary
 from cloudinary.models import CloudinaryField
 from tinymce.models import HTMLField
+import datetime as dt
+from django.contrib.auth.models import User
 
 
 # Create your models here.
