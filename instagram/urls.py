@@ -1,6 +1,9 @@
 from django.conf.urls import url
 from . import views
 from django.conf import settings
+from django.urls import path,re_path
+from django.conf.urls.static import static
+
 
 urlpatterns =[
     path('search/', views.search_results, name='search_results'),
