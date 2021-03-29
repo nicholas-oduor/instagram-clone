@@ -48,8 +48,8 @@ def signup(request):
 # Create your views here.
 # @login_required(login_url='/accounts/login/')
 def index(request):
-    date = dt.date.today()
     images = Image.objects.all()
+    date = dt.date.today()
     current_user = request.user
     users = Profile.objects.all()
     
@@ -66,7 +66,7 @@ def index(request):
             recipient.save()
             send_welcome_email(name,email)
 
-            HttpResponseRedirect('news_today')
+            HttpResponseRedirect('instag')
     else:
         form = NewsLetterForm()
     return render(request, 'home.html', {"date": date,"images":images, "users":users, "form": form})
@@ -81,7 +81,7 @@ def new_post(request):
             post = form.save(commit=False)
             post.Author = current_user
             post.save()
-        return redirect('newsToday')
+        return redirect('instag')
 
     else:
         form = NewPostForm()
@@ -96,7 +96,7 @@ def new_profile(request):
             post = form.save(commit=False)
             post.user = current_user
             post.save()
-        return redirect('newsToday')
+        return redirect('instag')
 
     else:
         form = ProfileForm()
@@ -126,7 +126,7 @@ def new_comment(request):
             post = form.save(commit=False)
             post.Author = current_user
             post.save()
-        return redirect('newsToday')
+        return redirect('instag')
 
     else:
         form = CommentForm()
@@ -161,4 +161,4 @@ def get_image(request, id):
 def like_image(request, pk):
     post= get_object_or_404(Image, id=request.POST.get('post_id'))
     post.likes.add(request.user)
-    return HttpResponseRedirect(reverse('newsToday', args=[str(pk)]))
+    return HttpResponseRedirect(reverse('instag', args=[str(pk)]))
