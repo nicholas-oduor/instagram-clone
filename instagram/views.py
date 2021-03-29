@@ -2,12 +2,51 @@ from django.shortcuts import render,redirect,get_object_or_404
 from django.http  import HttpResponse,Http404,HttpResponseRedirect
 import datetime as dt
 from django.contrib.auth.decorators import login_required
-from .models import Image,Comment,Profile
-from .forms import NewPostForm,ProfileForm,CommentForm,NewsLetterForm
+from .models import *
+from .forms import *
 from django.urls import reverse
 
+
+from django.shortcuts import render, redirect
+from django.views.generic.edit import FormView
+from . import forms
+from django.contrib.auth import login, authenticate, logout
+from django.urls import reverse_lazy
+from django.http import HttpResponseRedirect, HttpResponse
+from django.contrib import messages
+
+
+from django.views.generic.detail import DetailView
+
+from .forms import SignUpForm
+
+
+class UserView(DetailView):
+    template_name = 'users/profile.html'
+
+    def get_object(self):
+        return self.request.user
+
+
+def signup(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(request, email=user.email, password=raw_password)
+            if user is not None:
+                login(request, user)
+            else:
+                print("user is not authenticated")
+            return redirect('users:profile')
+    else:
+        form = SignUpForm()
+    return render(request, 'users/signup.html', {'form': form})
+
+
 # Create your views here.
-@login_required(login_url='/accounts/login/')
+# @login_required(login_url='/accounts/login/')
 def index(request):
     date = dt.date.today()
     images = Image.objects.all()

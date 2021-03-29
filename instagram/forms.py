@@ -1,6 +1,13 @@
 from django import forms
-from .models import Image,Profile,Comment
-from django_registration.forms import RegistrationForm
+from .models import *
+
+from django.contrib.auth.forms import UserCreationForm
+# from .models import User
+ 
+class SignUpForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ('email',)
 
     
 class NewPostForm(forms.ModelForm):

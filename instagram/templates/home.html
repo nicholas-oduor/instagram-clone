@@ -1,0 +1,90 @@
+{%extends 'base.html'%}
+{% load bootstrap3 %}
+{% block content %}
+{{ block.super}}
+<div class="container">
+
+    <div class="row">
+        <div class="row">
+            <div class="col-md-2">
+
+            </div>
+            <div class="col-md-7">
+                <!-- Looping through images   -->
+
+                {% for image in images %}
+                <div class="card mb-3 card1">
+                    <div class="row">
+                        <div class="row">
+                            <div class="col-md-1">
+                                <div class="card-body avat">
+
+                                    <img src="{{image.author_profile.photo.url}}" class="card-img-top"
+                                        alt="{{image.Author}}">
+
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                                <h5 class="card-title">{{image.Author}}</h5>
+                            </div>
+                        </div>
+                        <img src="{{image.image.url}}" class="card-img-top" alt="{{image.image_name}}" height="600px"
+                            width="550px">
+                        <div class="">
+                            <li class="list-group-item"> <i class="far fa-heart"
+                                    (click)="upVote(i)"></i>{{ quote.upvote}}
+
+                                <a href="{%url 'new_comment'%}"><i class="far fa-comment"></i>{{comments}}</a></li>
+                                
+
+                        </div>
+                        <div class="card-body">
+
+                            <h5 class="card-title"></h5>
+                            <p class="card-text">{{image.description}}</p>
+                            <p class="card-text"><small class="text-muted">{{ image.pub_date }}</small></p>
+
+                        </div>
+                    </div>
+                </div><br><br>
+
+
+                {% empty %}
+                <div class="row">
+                    <h2 class="text-center">There Are No Image Items</h2>
+                </div>
+                {% endfor %}
+
+            </div>
+            <div class="col-md-3 avat">
+                <h3>Suggestions For You</h3>
+                {% for user in users %}
+                <img src="{{user.photo.url}}" class="card-img-top" alt="{{user.user}}">
+                <p> {{user.user}} <button class="btn btn-success">Follow</button> </p>
+                <hr>
+
+
+
+
+                {% empty %}
+                <div class="row">
+                    <h2 class="text-center">There Are No users</h2>
+                </div>
+                {% endfor %}
+                <div class="container-fluid">
+
+                    <form action="{%url 'instag'%}" method="post">
+                        {%csrf_token%}
+
+                        {% bootstrap_form form layout='inline' %}
+                        <input type="submit" value="Subscribe">
+                    </form>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
