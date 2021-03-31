@@ -4,24 +4,24 @@
       
         <!-- Brand/logo -->
         <div class="navbar-header ">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="{% url 'instag' %}" aria-expanded="false">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="{% url 'instagram:instag' %}" aria-expanded="false">
             <span class="sr-only">INSTAGRAM CLONE</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="{% url 'instag' %}">INSTAGRAM CLONE</a>
+          <a class="navbar-brand" href="{% url 'instagram:instag' %}">INSTAGRAM CLONE</a>
         </div>
         
         <!-- Collapsible Navbar -->
         <div class="collapse navbar-collapse" id="example-1">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="{% url 'instag' %}">Home <span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="{% url 'instagram:instag' %}">Home <span class="sr-only">(current)</span></a></li>
             
           {% if user.is_authenticated %}
           
-         <li> <a  href="{% url 'new_post' %}">New Post</a></li>
-         <li> <a  href="{% url 'new_profile' %}">Profile</a></li>
+         <li> <a  href="{% url 'instagram:new_post' %}">New Post</a></li>
+         <li> <a  href="{% url 'instagram:new_profile' %}">Profile</a></li>
          <li> <a  href="accounts/logout">Logout</a></li>
           {% else %}
          <li><a  href="accounts/login">Login</a></li>

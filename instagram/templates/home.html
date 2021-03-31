@@ -34,7 +34,7 @@
                             <li class="list-group-item"> <i class="far fa-heart"
                                     (click)="upVote(i)"></i>{{ quote.upvote}}
 
-                                <a href="{%url 'new_comment'%}"><i class="far fa-comment"></i>{{comments}}</a></li>
+                                <a href="{%url 'instagram:new_comment'%}"><i class="far fa-comment"></i>{{comments}}</a></li>
                                 
 
                         </div>
@@ -73,7 +73,7 @@
                 {% endfor %}
                 <div class="container-fluid">
 
-                    <form action="{%url 'instag'%}" method="post">
+                    <form action="{%url 'instagram:instag'%}" method="post">
                         {%csrf_token%}
 
                         {% bootstrap_form form layout='inline' %}

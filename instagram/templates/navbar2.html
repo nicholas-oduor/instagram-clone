@@ -6,16 +6,16 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
         <a class="navbar-brand" style="font-size: 30px; margin-left: 200px; font-weight: bolder; font-family: cursive;"
-          href="{% url 'instag' %}">Instagram</a>
-        <form class="form-inline my-4 my-lg-0" role="search" action="{% url 'search_results'%}">
+          href="{% url 'instagram:instag' %}">Instagram</a>
+        <form class="form-inline my-4 my-lg-0" role="search" action="{% url 'instagram:search_results'%}">
           <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="user">
           <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
         </form>
-        <a href="{% url 'new_profile' %}"><i class="far fa-user-circle"
+        <a href="{% url 'instagram:new_profile' %}"><i class="far fa-user-circle"
             style="font-size: 30px; margin-left: 210px; color: black;">Profile</i></a>
       </div>
       <div>
-        <a href="{%url 'new_post'%}">New Post</a>
+        <a href="{%url 'instagram:new_post'%}">New Post</a>
       </div>
       <div>
         <a class="nav-item nav-link login" href="accounts/login">Login</a>
